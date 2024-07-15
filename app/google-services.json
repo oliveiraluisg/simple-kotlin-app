@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "612633428966",
+    "project_id": "qcarabom21",
+    "storage_bucket": "qcarabom21.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:612633428966:android:5b7de6b91c57e9eaa18c27",
+        "android_client_info": {
+          "package_name": "com.meta.qcarabom"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCaO7AcSZd7YfNZaD5LgTb4xmz3Zqjxi5s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
