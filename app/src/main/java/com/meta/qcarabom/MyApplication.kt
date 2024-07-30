@@ -6,11 +6,11 @@ import com.google.firebase.analytics.ktx.analytics
 import com.google.firebase.ktx.Firebase
 
 class MyApplication : Application() {
-    lateinit var mFirebaseAnalytics: FirebaseAnalytics
+    lateinit var firebaseAnalytics: FirebaseAnalytics
 
     override fun onCreate() {
         super.onCreate()
         // starta o Firebase
-        mFirebaseAnalytics = Firebase.analytics
+        firebaseAnalytics = Firebase.analytics
     }
 }

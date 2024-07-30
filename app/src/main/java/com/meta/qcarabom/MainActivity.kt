@@ -7,23 +7,31 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ktx.analytics
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.analytics.ktx.logEvent
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var mFirebaseAnalytics: FirebaseAnalytics
+    private lateinit var firebaseAnalytics: FirebaseAnalytics
+
+    public override fun onResume() {
+        super.onResume()
+        recordScreenView()
+    }
+
+    private fun recordScreenView() {
+        // evento de screen_view
+        val screenName = "/meta-app/tela-1"
+
+        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW) {
+            param(FirebaseAnalytics.Param.SCREEN_NAME, screenName)
+            param(FirebaseAnalytics.Param.SCREEN_CLASS, "MainActivity")
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // starta o Firebase
-        mFirebaseAnalytics = Firebase.analytics
-
-        // evento de screen_view
-        val bundle = Bundle().apply {
-            putString(FirebaseAnalytics.Param.SCREEN_NAME, "/meta-app/tela-1")
-            putString(FirebaseAnalytics.Param.SCREEN_CLASS, "MainActivity")
-        }
-        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle)
+        firebaseAnalytics = Firebase.analytics
 
         val button: Button = findViewById(R.id.button_next)
         button.setOnClickListener {
@@ -33,7 +41,7 @@ class MainActivity : AppCompatActivity() {
                 putString("custom_type", "botao")
                 putString("custom_title", "proxima-tela")
             }
-            mFirebaseAnalytics.logEvent("clique", clickBundle)
+            firebaseAnalytics.logEvent("clique", clickBundle)
 
             val intent = Intent(this, SecondActivity::class.java)
             startActivity(intent)

@@ -14,6 +14,11 @@
         android:theme="@style/Theme.Qcarabom"
         tools:targetApi="31">
 
+        <!-- Desativar o rastreamento automático de visualizações de tela -->
+        <meta-data
+            android:name="google_analytics_automatic_screen_reporting_enabled"
+            android:value="false" />
+
         <activity android:name=".SecondActivity" />
         <activity android:name=".MainActivity" android:exported="true">
             <intent-filter>
